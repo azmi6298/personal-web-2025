@@ -1,2 +1,5 @@
+# lint code before commiting
+npx lint-staged
+
 # make sure build success
 npm run build
