@@ -1,0 +1,44 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div class="flex flex-col min-h-screen justify-center items-center select-none">
+  <span class="hero-title" id="movingText"></span>
+
+  <span class="text-xl lg:text-2xl font-semibold">
+    Web Developer @{" "}
+    <span class="hover:text-violet-600">Sequis Innovation Lab</span>
+  </span>
+
+  <div class="flex gap-5 text-4xl lg:text-[3rem] mt-[3rem]">
+    <a
+      href="https://www.linkedin.com/in/azmi6298/"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <Icon name="linkedin" class="hover:text-blue-400" />
+    </a>
+    <a href="https://github.com/azmi6298" target="_blank" rel="noreferrer">
+      <Icon name="github" class="hover:text-gray-600" />
+    </a>
+    <a href="https://instagram.com/azmi6298" target="_blank" rel="noreferrer">
+      <Icon name="instagram" class="hover:text-orange-400" />
+    </a>
+  </div>
+</div>
+
+<script>
+  import TypeIt from "typeit";
+  new TypeIt("#movingText")
+    .type("Hi, I'm Imza")
+    .pause(300)
+    .delete(4)
+    .pause(600)
+    .type("Azmi!")
+    .pause(2000)
+    .options({
+      loop: true,
+      waitUntilVisible: true,
+    })
+    .go();
+</script>
