@@ -1,0 +1,31 @@
+---
+import type { Blog } from "./Blogs.astro";
+
+interface Props {
+  data: Blog;
+}
+
+const { data } = Astro.props;
+
+function formatDate(date: string) {
+  return new Date(date).toLocaleString("en", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+---
+
+<div class="mb-10">
+  <a
+    href={data.link}
+    target="_blank"
+    rel="noreferrer"
+    class="text-xl lg:text-4xl font-semibold hover:text-violet-600"
+  >
+    {data.title}
+  </a>
+  <p class="text-sm lg:text-2xl grayed-text">
+    {formatDate(data.publishedDate)}
+  </p>
+</div>

@@ -1,0 +1,46 @@
+---
+import { Icon } from "astro-icon/components";
+import Parser from "rss-parser";
+import BlogItem from "./BlogItem.astro";
+
+export type Blog = {
+  id: number;
+  title: string;
+  link: string;
+  publishedDate: string;
+};
+
+const parser: Parser = new Parser();
+const parsedBlogs = await parser.parseURL("https://medium.com/feed/@azmi6298");
+
+const blogData: Blog[] = parsedBlogs.items.map((blog) => ({
+  id: blog.id,
+  link: blog.link || "",
+  title: blog.title || "",
+  publishedDate: blog.pubDate || "",
+}));
+---
+
+<div
+  class="flex flex-col xl:flex-row xl:space-x-10 min-h-screen justify-center xl:justify-around items-start lg:items-center"
+>
+  <div class="flex flex-col lg:items-center lg:space-y-10">
+    <p class="section-title">Blogs</p>
+    <a
+      href="https://medium.com/@azmi6298"
+      target="_blank"
+      rel="noreferrer"
+      class="hidden xl:block"
+    >
+      <Icon name="medium" class="text-[6rem] hover:text-violet-600" />
+    </a>
+  </div>
+  <div class="flex flex-col">
+    {
+      blogData &&
+        blogData.map((blog) => {
+          return <BlogItem data={blog} />;
+        })
+    }
+  </div>
+</div>
