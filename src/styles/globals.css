@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	body {
+		@apply bg-primary text-gray-900 dark:bg-primary-inverted dark:text-gray-100;
+	}
+
+	nav {
+		@apply bg-primary text-gray-900 dark:bg-primary-inverted dark:text-gray-100;
+	}
+
+	header,
+	span,
+	svg,
+	p,
+	ul,
+	a {
+		@apply text-gray-900 dark:text-gray-100;
+	}
+
+	footer {
+		@apply flex flex-col min-h-min bg-violet-800 items-center py-4 lg:py-8 bottom-0 z-10 w-full text-gray-100 !important;
+	}
+}
+
+@layer components {
+	.hero-title {
+		@apply text-[3rem] md:text-[7rem] font-bold;
+	}
+
+	.ti-cursor {
+		@apply text-gray-900 dark:text-gray-100;
+		@apply text-[7rem] font-bold;
+	}
+
+	.grayed-text {
+		@apply dark:text-slate-400 !important;
+	}
+
+	.light-text {
+		@apply text-gray-100 !important;
+	}
+
+	.section-title {
+		@apply text-2xl lg:text-[4rem] font-bold underline lg:no-underline mb-4;
+	}
+
+	.mobile-nav {
+		@apply bg-slate-200/75 text-gray-900 dark:bg-[#181418]/75 dark:text-gray-100 xl:hidden flex justify-center py-2 border-b-2 border-violet-500;
+	}
+}
