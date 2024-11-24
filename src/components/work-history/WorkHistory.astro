@@ -46,11 +46,11 @@ const workHistories = [
 ---
 
 <div class="work-history-container">
-	<p class="section-title mb-8">Work History</p>
+	<div class="section-title">Work History</div>
 	<div class="flex flex-col">
 		{
 			workHistories.slice(0, 3).map((history) => (
-				<div class="mb-8 flex flex-col lg:grid lg:grid-cols-2 ">
+				<div class="flex flex-col lg:grid lg:grid-cols-2 gap-x-4">
 					<p class="font-semibold text-base lg:text-lg grayed-text">
 						{history.period}
 					</p>
@@ -62,9 +62,9 @@ const workHistories = [
 			))
 		}
 	</div>
-	<a href="/about" class="self-center text-sm lg:text-xl font-semibold italic"
-		>See More..</a
-	>
+	<a href="/about" class="self-center text-sm lg:text-xl font-semibold">
+		See More..
+	</a>
 	<a
 		href="Resume-Muhammad-Azmi-2024.pdf"
 		target="_blank"
@@ -77,6 +77,6 @@ const workHistories = [
 
 <style>
 	.work-history-container {
-		@apply h-full flex flex-col justify-center;
+		@apply h-full flex flex-col justify-center gap-y-8;
 	}
 </style>

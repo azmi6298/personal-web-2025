@@ -7,10 +7,10 @@ import { Icon } from 'astro-icon/components';
 
 	<span class="text-center text-xl lg:text-2xl font-semibold">
 		Web Developer @{' '}
-		<span class="hover:text-violet-600">Sequis Innovation Lab</span>
+		<span class="hover:text-brand">Sequis Innovation Lab</span>
 	</span>
 
-	<div class="flex gap-5 text-4xl lg:text-[3rem] mt-[3rem]">
+	<div class="flex gap-x-5 text-4xl lg:text-[3rem]">
 		<a
 			href="https://www.linkedin.com/in/azmi6298/"
 			target="_blank"
@@ -29,7 +29,11 @@ import { Icon } from 'astro-icon/components';
 
 <style>
 	.hero-container {
-		@apply h-full flex flex-col gap-y-6 justify-center items-center select-none;
+		@apply h-full flex flex-col gap-y-10 justify-center items-center select-none;
+	}
+
+	.hero-title {
+		@apply text-4xl md:text-[4rem] lg:text-[5rem] font-bold text-center;
 	}
 </style>
 
