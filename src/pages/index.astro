@@ -1,27 +1,38 @@
 ---
-import AboutMe from "../components/about-me/AboutMe.astro";
-import Blogs from "../components/blogs/Blogs.astro";
-import Hero from "../components/hero/Hero.astro";
-import "../styles/globals.css";
-
-const metaTitle = "Muhammad Azmi, Frontend Developer";
-const metaText =
-  "Hi, I'm Azmi! A passionate frontend developer with 5 years of experience and a full-stack background. I love building intuitive, user-friendly web experiences";
+import Layout from '../layouts/Layout.astro';
+import AboutMe from '../components/about-me/AboutMe.astro';
+import Blogs from '../components/blogs/Blogs.astro';
+import Hero from '../components/hero/Hero.astro';
+import '../styles/globals.css';
+import WorkHistory from '@/components/work-history/WorkHistory.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{metaTitle}</title>
-    <meta property="og:title" content={metaTitle} />
-    <meta name="description" content={metaText} />
-    <meta property="og:description" content={metaText} />
-  </head>
-  <body>
-    <Hero />
-    <AboutMe />
-    <Blogs />
-  </body>
-</html>
+<Layout>
+	<div class="container mx-auto snap-container px-8 lg:px-24">
+		<section class="snap-section">
+			<Hero />
+		</section>
+		<section class="snap-section">
+			<div class="h-full lg:grid lg:grid-cols-2 gap-16">
+				<AboutMe />
+				<WorkHistory class="hidden lg:block" />
+			</div>
+		</section>
+		<section class="snap-section lg:hidden">
+			<WorkHistory />
+		</section>
+		<section class="snap-section">
+			<Blogs />
+		</section>
+	</div>
+</Layout>
+
+<style>
+	.snap-container {
+		@apply max-h-dvh max-w-full overflow-y-scroll snap-y snap-mandatory;
+	}
+
+	.snap-section {
+		@apply h-dvh snap-start snap-always;
+	}
+</style>

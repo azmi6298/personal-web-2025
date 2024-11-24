@@ -1,0 +1,22 @@
+---
+import '../styles/globals.css';
+
+const metaTitle = 'Muhammad Azmi, Frontend Developer';
+const metaText =
+	"Hi, I'm Azmi! A passionate frontend developer with 5 years of experience and a full-stack background. I love building intuitive, user-friendly web experiences";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>{metaTitle}</title>
+		<meta property="og:title" content={metaTitle} />
+		<meta name="description" content={metaText} />
+		<meta property="og:description" content={metaText} />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

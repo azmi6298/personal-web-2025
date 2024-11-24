@@ -1,12 +1,71 @@
 ---
-import AboutMeLeftSection from "./AboutMeLeftSection.astro";
-import AboutMeRightSection from "./AboutMeRightSection.astro";
+import TechStackSlider from './TechStackSlider.astro';
+
+export interface TechStack {
+	label: string;
+	icon: string;
+}
+
+const techStacks: TechStack[] = [
+	{
+		label: 'React',
+		icon: 'react',
+	},
+	{
+		label: 'Next.js',
+		icon: 'nextjs',
+	},
+	{
+		label: 'Typescript',
+		icon: 'typescript',
+	},
+	{
+		label: 'TailwindCSS',
+		icon: 'tailwind',
+	},
+	{
+		label: 'Astro',
+		icon: 'astro',
+	},
+	{
+		label: 'Jenkins',
+		icon: 'jenkins',
+	},
+	{
+		label: 'Ruby on Rails',
+		icon: 'rails',
+	},
+	{
+		label: 'Vue',
+		icon: 'vue',
+	},
+	{
+		label: 'Postgres',
+		icon: 'postgres',
+	},
+];
 ---
 
-<div
-  class="flex flex-col lg:flex-row lg:space-x-10 lg:min-h-screen justify-between lg:justify-around items-start lg:items-center"
->
-  <p class="section-title lg:hidden mb-10 lg:mb-0">About</p>
-  <AboutMeLeftSection />
-  <AboutMeRightSection />
+<div class="about-container">
+	<div class="flex flex-col gap-y-12">
+		<p class="section-title">About Me</p>
+		<p class="font-light">
+			<span class="highlight-text">Frontend Developer</span> with expertise in Next.js
+			and TypeScript, experienced in <span class="highlight-text"
+				>creating dynamic user interfaces</span
+			> and also fullstack development. Skilled in building efficient web applications
+			and optimizing workflows using Jenkins and CI/CD pipelines.
+		</p>
+
+		<div class="flex flex-col gap-y-6">
+			<span class="font-semibold lg:text-3xl">Tech Stack Experience</span>
+			<TechStackSlider data={techStacks} />
+		</div>
+	</div>
 </div>
+
+<style>
+	.about-container {
+		@apply h-full flex flex-col justify-center;
+	}
+</style>

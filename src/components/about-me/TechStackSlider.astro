@@ -1,0 +1,41 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { TechStack } from './AboutMe.astro';
+
+interface Props {
+	data: TechStack[];
+}
+
+const { data } = Astro.props;
+---
+
+<div class="slider-container">
+	<div class="splide">
+		<div class="splide__track">
+			<ul class="splide__list">
+				{
+					data.map((data) => (
+						<li class="splide__slide">
+							<div class="card">
+								<Icon name={data.icon} class="w-20 h-20" />
+								<span class="text-sm font-semibold">{data.label}</span>
+							</div>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</div>
+
+<style>
+	.slider-container {
+		@apply max-w-full;
+	}
+
+	.card {
+		@apply flex flex-col justify-center items-center;
+	}
+</style>
+
+<script src="../../libs/splide.js"></script>
