@@ -17,6 +17,8 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/tailwind": "^5.1.2",
+    "@splidejs/splide": "^4.1.4",
+    "@splidejs/splide-extension-auto-scroll": "^0.5.3",
     "astro": "^4.16.11",
     "astro-icon": "^1.1.2",
     "rss-parser": "^3.13.0",
