@@ -1,0 +1,57 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import portraitImage from '@/images/azmi-portrait.jpeg';
+import { workExpYears } from '@/utils/constants';
+import { Icon } from 'astro-icon/components';
+import GetResumeButton from '@/components/buttons/GetResumeButton.astro';
+---
+
+<Layout>
+	<div class="base-container">
+		<div class="flex h-dvh justify-center items-center gap-x-16">
+			<div class="w-full flex flex-col gap-y-8 items-center">
+				<Image class="w-48 h-48 rounded-full" src={portraitImage} alt="Azmi" />
+				<div class="flex gap-x-5 text-4xl">
+					<a
+						href="https://www.linkedin.com/in/azmi6298/"
+						target="_blank"
+						rel="noreferrer"
+					>
+						<Icon name="linkedin" class="hover:text-blue-400" />
+					</a>
+					<a
+						href="https://github.com/azmi6298"
+						target="_blank"
+						rel="noreferrer"
+					>
+						<Icon name="github" class="hover:text-gray-600" />
+					</a>
+					<a
+						href="https://instagram.com/azmi6298"
+						target="_blank"
+						rel="noreferrer"
+					>
+						<Icon name="instagram" class="hover:text-orange-400" />
+					</a>
+				</div>
+				<GetResumeButton />
+			</div>
+			<div class="flex flex-col gap-y-4">
+				<p class="font-semibold text-4xl">Hi, I'm Azmi</p>
+				<p class="text-lg">
+					I'm a passionate web developer with {workExpYears} years of experience
+					building web applications. Have various experienced in both frontend and
+					backend development and have a strong understanding of industry standards.
+					I'm always eager to dive into new technologies and discover innovative
+					solutions.
+				</p>
+				<p class="text-lg">
+					When not immersed in code, I enjoy unwinding with a competitive game
+					of ping pong 🏓 or hitting the gym 🏋🏻 to recharge, fueling creativity
+					and productivity.
+				</p>
+			</div>
+		</div>
+	</div>
+</Layout>

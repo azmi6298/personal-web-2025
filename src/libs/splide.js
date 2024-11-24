@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				perPage: 4,
 			},
 			640: {
-				perPage: 3,
+				perPage: 2,
 			},
 		},
 	});
