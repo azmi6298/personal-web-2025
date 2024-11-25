@@ -9,5 +9,6 @@
 			"@libs/*": ["src/libs/*"],
 			"@pages/*": ["src/pages/*"]
 		}
-	}
+	},
+	"exclude": ["dist"]
 }
