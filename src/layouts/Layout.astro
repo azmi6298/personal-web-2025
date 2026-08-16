@@ -1,5 +1,6 @@
 ---
 import Header from '@/components/header/Header.astro';
+import { ClientRouter } from 'astro:transitions';
 import '../styles/globals.css';
 import '@fontsource-variable/jetbrains-mono';
 import { workExpYears } from '@/utils/constants';
@@ -39,9 +40,10 @@ const canonicalHref = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
 		<meta property="og:title" content={metaTitle} />
 		<meta name="description" content={metaText} />
 		<meta property="og:description" content={metaText} />
+		<ClientRouter />
 	</head>
 	<body>
-		<Header />
+		<Header transition:persist />
 		<slot />
 	</body>
 </html>

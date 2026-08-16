@@ -1,9 +1,11 @@
 import Splide from '@splidejs/splide';
-import '@splidejs/splide/css';
 import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 
-document.addEventListener('DOMContentLoaded', () => {
-	var splide = new Splide('.splide', {
+document.addEventListener('astro:page-load', () => {
+	var el = document.querySelector('.splide');
+	if (!el) return;
+
+	var splide = new Splide(el, {
 		type: 'loop',
 		perPage: 4,
 		arrows: false,
