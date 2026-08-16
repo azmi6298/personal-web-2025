@@ -8,7 +8,7 @@ A single piece of long-form writing, authored as one markdown file in the `blog`
 collection. A Post is the unit of publishing: it has one canonical location, one
 publication date, and one language.
 
-A Post is not a page. Pages (`/`, `/about`) are hand-built; Posts are content.
+A Post is not a page. Pages (`/`, `/about-me`) are hand-built; Posts are content.
 
 ## Draft
 
