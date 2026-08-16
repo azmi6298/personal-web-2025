@@ -28,27 +28,28 @@ import { Icon } from 'astro-icon/components';
 </div>
 
 <style>
-	.hero-container {
-		@apply h-full flex flex-col gap-y-10 justify-center items-center select-none;
-	}
+.hero-container {
+	@apply h-full flex flex-col gap-y-10 justify-center items-center select-none;
+}
 
-	.hero-title {
-		@apply text-4xl md:text-[4rem] lg:text-[5rem] font-bold text-center;
-	}
+.hero-title {
+	@apply text-4xl md:text-[4rem] lg:text-[5rem] font-bold text-center;
+}
 </style>
 
 <script>
-	import TypeIt from 'typeit';
-	new TypeIt('#movingText')
-		.type("Hi, I'm Imza")
-		.pause(300)
-		.delete(4)
-		.pause(600)
-		.type('Azmi!')
-		.pause(2000)
-		.options({
-			loop: true,
-			waitUntilVisible: true,
-		})
-		.go();
+import TypeIt from 'typeit';
+
+new TypeIt('#movingText')
+	.type("Hi, I'm Imza")
+	.pause(300)
+	.delete(4)
+	.pause(600)
+	.type('Azmi!')
+	.pause(2000)
+	.options({
+		loop: true,
+		waitUntilVisible: true,
+	})
+	.go();
 </script>

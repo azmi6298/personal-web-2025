@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
 import AboutMe from '../components/about-me/AboutMe.astro';
 import Blogs from '../components/blogs/Blogs.astro';
 import Hero from '../components/hero/Hero.astro';
+import Layout from '../layouts/Layout.astro';
 import '../styles/globals.css';
 import WorkHistory from '@/components/work-history/WorkHistory.astro';
 ---
@@ -28,11 +28,11 @@ import WorkHistory from '@/components/work-history/WorkHistory.astro';
 </Layout>
 
 <style>
-	.snap-container {
-		@apply max-h-dvh max-w-full overflow-y-scroll snap-y snap-mandatory;
-	}
+.snap-container {
+	@apply max-h-dvh max-w-full overflow-y-scroll snap-y snap-mandatory;
+}
 
-	.snap-section {
-		@apply h-dvh snap-start snap-always;
-	}
+.snap-section {
+	@apply h-dvh snap-start snap-always;
+}
 </style>

@@ -2,7 +2,7 @@ import Splide from '@splidejs/splide';
 import '@splidejs/splide/css';
 import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
 	var splide = new Splide('.splide', {
 		type: 'loop',
 		perPage: 4,

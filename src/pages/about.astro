@@ -1,10 +1,10 @@
 ---
-import Layout from '@/layouts/Layout.astro';
 import { Image } from 'astro:assets';
-import portraitImage from '@/images/azmi-portrait.jpeg';
-import { workExpYears } from '@/utils/constants';
 import { Icon } from 'astro-icon/components';
 import GetResumeButton from '@/components/buttons/GetResumeButton.astro';
+import portraitImage from '@/images/azmi-portrait.jpeg';
+import Layout from '@/layouts/Layout.astro';
+import { workExpYears } from '@/utils/constants';
 ---
 
 <Layout>
@@ -49,10 +49,10 @@ import GetResumeButton from '@/components/buttons/GetResumeButton.astro';
 				</p>
 				<p class="description">
 					I'm a passionate web developer with {workExpYears} years of experience
-					building web applications. Have various experienced in both frontend and
-					backend development and have a strong understanding of industry standards.
-					I'm always eager to dive into new technologies and discover innovative
-					solutions.
+					building web applications. Have various experienced in both frontend
+					and backend development and have a strong understanding of industry
+					standards. I'm always eager to dive into new technologies and discover
+					innovative solutions.
 				</p>
 				<p class="description">
 					When not immersed in code, I enjoy unwinding with a competitive game
@@ -65,7 +65,7 @@ import GetResumeButton from '@/components/buttons/GetResumeButton.astro';
 </Layout>
 
 <style>
-	.description {
-		@apply text-sm md:text-lg;
-	}
+.description {
+	@apply text-sm md:text-lg;
+}
 </style>

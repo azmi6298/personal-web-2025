@@ -1,0 +1,25 @@
+# Refer for explanation to following link:
+# https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
+#
+pre-commit:
+  parallel: true
+  commands:
+    typescript-check:
+      skip:
+        - merge
+        - rebase
+      run: npx astro check
+      fail_text: 'Failed typescript compiler'
+    format-and-lint:
+      skip:
+        - merge
+        - rebase
+      glob: '*.{js,ts,cjs,mjs,jsx,tsx,json,jsonc,astro,css}'
+      run: npx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+      stage_fixed: true
+      fail_text: 'Failed to run format and lint'
+pre-push:
+  commands:
+    build-check:
+      run: npm run build
+      fail_text: 'Failed to run build'
