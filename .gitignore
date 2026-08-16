@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # playwright-mcp session artifacts
 .playwright-mcp/
+
+# local markdown issue tracker
+.scratch/
