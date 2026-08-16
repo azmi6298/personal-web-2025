@@ -13,32 +13,39 @@ const posts = await getPublishedPosts();
 	<main class="base-container max-w-screen-lg py-32">
 		<h1 class="section-title">Blogs</h1>
 
-		{posts.length === 0 ? (
+		{
+			posts.length === 0 ? (
 				<p class="grayed-text">Nothing published yet. Come back soon.</p>
 			) : (
 				<ul class="flex flex-col gap-y-10 mt-10">
 					{posts.map((post) => (
 						<li>
-							<a href={`/blogs/${post.id}`} class="text-xl lg:text-2xl font-semibold hover:text-brand">
+							<a
+								href={`/blogs/${post.id}`}
+								class="text-xl lg:text-2xl font-semibold hover:text-brand"
+							>
 								{post.data.title}
 							</a>
 							<div class="flex flex-wrap items-center gap-3 text-sm lg:text-base grayed-text mt-1">
 								<time datetime={post.data.pubDate.toISOString()}>
 									{formatDate(post.data.pubDate)}
 								</time>
-								{post.data.lang === 'id' && <span class="lang-badge">Bahasa Indonesia</span>}
+								{post.data.lang === 'id' && (
+									<span class="lang-badge">Bahasa Indonesia</span>
+								)}
 								{post.data.draft && <span class="lang-badge">Draft</span>}
 							</div>
 							<p class="grayed-text mt-2">{post.data.description}</p>
 						</li>
 					))}
 				</ul>
-			)}
+			)
+		}
 	</main>
 </Layout>
 
 <style>
-.lang-badge {
-	@apply text-xs border border-brand text-brand rounded-full px-2 py-0.5;
-}
+	.lang-badge {
+		@apply text-xs border border-brand text-brand rounded-full px-2 py-0.5;
+	}
 </style>

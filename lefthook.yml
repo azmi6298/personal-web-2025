@@ -9,17 +9,25 @@ pre-commit:
         - merge
         - rebase
       run: npx astro check
-      fail_text: 'Failed typescript compiler'
+      fail_text: "Failed typescript compiler"
     format-and-lint:
       skip:
         - merge
         - rebase
-      glob: '*.{js,ts,cjs,mjs,jsx,tsx,json,jsonc,astro,css}'
+      glob: "*.{js,ts,cjs,mjs,jsx,tsx,json,jsonc,css}"
       run: npx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
       stage_fixed: true
-      fail_text: 'Failed to run format and lint'
+      fail_text: "Failed to run format and lint"
+    prettier:
+      skip:
+        - merge
+        - rebase
+      glob: "*.astro"
+      run: npx prettier --write {staged_files}
+      stage_fixed: true
+      fail_text: "Failed to prettier Astro files"
 pre-push:
   commands:
     build-check:
       run: npm run build
-      fail_text: 'Failed to run build'
+      fail_text: "Failed to run build"

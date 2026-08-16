@@ -23,28 +23,30 @@ const menus: Menu[] = [
 <header class="fixed top-6 translate-x-[-50%] left-[50%]">
 	<div class="header-container">
 		<div class="flex divide-x-2 divide-brand justify-between">
-			{menus.map((menu) => (
+			{
+				menus.map((menu) => (
 					<a href={menu.path} class="menu">
 						{menu.label}
 					</a>
-				))}
+				))
+			}
 		</div>
 	</div>
 </header>
 
 <style>
-.header-container {
-	@apply shadow-lg shadow-brand/30 bg-slate-700/50 mx-auto lg:max-w-screen-xl py-4 px-4 lg:px-8 rounded-full;
-}
-
-.menu {
-	@apply px-4 lg:px-8 text-xs lg:text-lg font-semibold;
-	@apply inline-block transition duration-200 hover:text-brand hover:-translate-y-0.5;
-}
-
-@media (prefers-reduced-motion: reduce) {
-	.menu {
-		@apply transition-none hover:translate-y-0;
+	.header-container {
+		@apply shadow-lg shadow-brand/30 bg-slate-700/50 mx-auto lg:max-w-screen-xl py-4 px-4 lg:px-8 rounded-full;
 	}
-}
+
+	.menu {
+		@apply px-4 lg:px-8 text-xs lg:text-lg font-semibold;
+		@apply inline-block transition duration-200 hover:text-brand hover:-translate-y-0.5;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.menu {
+			@apply transition-none hover:translate-y-0;
+		}
+	}
 </style>

@@ -50,7 +50,8 @@ const workHistories = [
 <div class="work-history-container">
 	<div class="section-title">Work History</div>
 	<div class="flex flex-col gap-y-4">
-		{workHistories.slice(0, 3).map((history) => (
+		{
+			workHistories.slice(0, 3).map((history) => (
 				<div class="flex flex-col lg:grid lg:grid-cols-2 gap-x-4">
 					<p class="font-semibold text-base lg:text-lg grayed-text">
 						{history.period}
@@ -60,7 +61,8 @@ const workHistories = [
 						<p class="grayed-text">{history.description}</p>
 					</div>
 				</div>
-			))}
+			))
+		}
 	</div>
 	<a href="/about-me" class="self-center text-sm lg:text-xl font-semibold">
 		See More..
@@ -69,7 +71,7 @@ const workHistories = [
 </div>
 
 <style>
-.work-history-container {
-	@apply h-full flex flex-col justify-center gap-y-6;
-}
+	.work-history-container {
+		@apply h-full flex flex-col justify-center gap-y-6;
+	}
 </style>

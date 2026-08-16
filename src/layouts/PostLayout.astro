@@ -34,17 +34,33 @@ const { title, description, pubDate, lang, canonicalUrl, heroImage, draft } =
 			{draft && <span class="lang-badge">Draft</span>}
 		</div>
 
-		{canonicalUrl && (
+		{
+			canonicalUrl && (
 				<p class="mt-6 text-sm grayed-text border-l-2 border-brand pl-4">
 					Tulisan ini pertama kali terbit di{' '}
-					<a href={canonicalUrl} target="_blank" rel="noreferrer" class="underline hover:text-brand">
+					<a
+						href={canonicalUrl}
+						target="_blank"
+						rel="noreferrer"
+						class="underline hover:text-brand"
+					>
 						Medium
 					</a>
 					.
 				</p>
-			)}
+			)
+		}
 
-		{heroImage && <Image src={heroImage} alt="" class="w-full rounded-lg mt-10" loading="eager" />}
+		{
+			heroImage && (
+				<Image
+					src={heroImage}
+					alt=""
+					class="w-full rounded-lg mt-10"
+					loading="eager"
+				/>
+			)
+		}
 
 		<div class="prose mt-10">
 			<slot />
@@ -53,7 +69,7 @@ const { title, description, pubDate, lang, canonicalUrl, heroImage, draft } =
 </Layout>
 
 <style>
-.lang-badge {
-	@apply text-xs border border-brand text-brand rounded-full px-2 py-0.5;
-}
+	.lang-badge {
+		@apply text-xs border border-brand text-brand rounded-full px-2 py-0.5;
+	}
 </style>
