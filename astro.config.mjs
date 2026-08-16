@@ -5,8 +5,8 @@ import { defineConfig } from 'astro/config';
 
 import icon from 'astro-icon';
 
-// https://astro.build/config
 export default defineConfig({
+	site: 'https://azmi-dev.netlify.app/',
 	integrations: [
 		tailwind({
 			applyBaseStyles: false,

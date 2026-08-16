@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+import { formatDate } from '@/utils/posts';
+
+interface Props {
+	post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, lang, canonicalUrl, heroImage, draft } =
+	post.data;
+---
+
+<Layout
+	title={`${title} | Azmi`}
+	description={description}
+	canonical={canonicalUrl}
+	lang={lang}
+>
+	<article class="base-container max-w-screen-lg py-32">
+		<a href="/blogs" class="text-sm grayed-text hover:text-brand"
+			>&larr; All posts</a
+		>
+
+		<h1 class="text-3xl lg:text-5xl font-bold mt-6 mb-4">{title}</h1>
+
+		<div class="flex flex-wrap items-center gap-3 text-sm grayed-text">
+			<time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+			{lang === 'id' && <span class="lang-badge">Bahasa Indonesia</span>}
+			{draft && <span class="lang-badge">Draft</span>}
+		</div>
+
+		{canonicalUrl && (
+				<p class="mt-6 text-sm grayed-text border-l-2 border-brand pl-4">
+					Tulisan ini pertama kali terbit di{' '}
+					<a href={canonicalUrl} target="_blank" rel="noreferrer" class="underline hover:text-brand">
+						Medium
+					</a>
+					.
+				</p>
+			)}
+
+		{heroImage && <Image src={heroImage} alt="" class="w-full rounded-lg mt-10" loading="eager" />}
+
+		<div class="prose mt-10">
+			<slot />
+		</div>
+	</article>
+</Layout>
+
+<style>
+.lang-badge {
+	@apply text-xs border border-brand text-brand rounded-full px-2 py-0.5;
+}
+</style>

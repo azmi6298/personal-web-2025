@@ -1,31 +1,22 @@
 ---
-import type { Blog } from './Blogs.astro';
+import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '@/utils/posts';
 
 interface Props {
-	data: Blog;
+	post: CollectionEntry<'blog'>;
 }
 
-const { data } = Astro.props;
-
-function formatDate(date: string) {
-	return new Date(date).toLocaleString('en', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-	});
-}
+const { post } = Astro.props;
 ---
 
 <div class="mb-10">
 	<a
-		href={data.link}
-		target="_blank"
-		rel="noreferrer"
+		href={`/blogs/${post.id}`}
 		class="text-xl lg:text-2xl font-semibold hover:text-brand"
 	>
-		{data.title}
+		{post.data.title}
 	</a>
 	<p class="text-sm lg:text-xl grayed-text">
-		{formatDate(data.publishedDate)}
+		{formatDate(post.data.pubDate)}
 	</p>
 </div>

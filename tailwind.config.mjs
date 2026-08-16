@@ -8,7 +8,7 @@ export default {
 			colors: {
 				primary: '#e2e8f0',
 				'primary-inverted': '#181418',
-				brand: '#6d28d9',
+				brand: '#8c46fa',
 			},
 			fontFamily: {
 				sans: ['JetBrains Mono Variable', ...defaultTheme.fontFamily.sans],

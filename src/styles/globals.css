@@ -35,10 +35,64 @@
 	}
 
 	.section-title {
-		@apply text-2xl lg:text-[2rem] font-bold underline lg:no-underline mb-4;
+		@apply text-2xl lg:text-[3rem] font-bold underline lg:no-underline mb-4;
 	}
 
 	.highlight-text {
 		@apply font-semibold underline decoration-violet-600 decoration-2;
+	}
+
+	/* Long-form article body. Hand-rolled rather than pulling in the typography
+	   plugin — the element set below is all the migrated posts actually use. */
+	.prose {
+		@apply text-base lg:text-lg leading-relaxed;
+	}
+
+	.prose > * + * {
+		@apply mt-6;
+	}
+
+	.prose h2 {
+		@apply text-2xl lg:text-3xl font-bold mt-12;
+	}
+
+	.prose h3 {
+		@apply text-xl lg:text-2xl font-semibold mt-10;
+	}
+
+	.prose a {
+		@apply text-brand underline underline-offset-2;
+	}
+
+	.prose ul {
+		@apply list-disc pl-6;
+	}
+
+	.prose ol {
+		@apply list-decimal pl-6;
+	}
+
+	.prose li + li {
+		@apply mt-2;
+	}
+
+	.prose img {
+		@apply rounded-lg;
+	}
+
+	.prose blockquote {
+		@apply border-l-2 border-brand pl-4 italic;
+	}
+
+	.prose pre {
+		@apply rounded-lg p-4 overflow-x-auto text-sm;
+	}
+
+	.prose :not(pre) > code {
+		@apply bg-slate-300/60 dark:bg-slate-700/60 rounded px-1.5 py-0.5 text-[0.9em];
+	}
+
+	.prose hr {
+		@apply border-slate-400/40 my-10;
 	}
 }
