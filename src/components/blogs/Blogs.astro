@@ -11,7 +11,9 @@ const posts = (await getPublishedPosts()).slice(0, 3);
 	</div>
 	<div class="flex flex-col">
 		{posts.map((post) => <BlogItem post={post} />)}
-		<a href="/blogs" class="text-sm lg:text-lg text-brand hover:underline"
+		<a
+			href="/blogs"
+			class="text-sm lg:text-lg grayed-text hover:text-brand transition-colors duration-200"
 			>All posts &rarr;</a
 		>
 	</div>

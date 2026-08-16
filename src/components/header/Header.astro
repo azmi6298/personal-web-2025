@@ -39,5 +39,12 @@ const menus: Menu[] = [
 
 .menu {
 	@apply px-4 lg:px-8 text-xs lg:text-lg font-semibold;
+	@apply inline-block transition duration-200 hover:text-brand hover:-translate-y-0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.menu {
+		@apply transition-none hover:translate-y-0;
+	}
 }
 </style>

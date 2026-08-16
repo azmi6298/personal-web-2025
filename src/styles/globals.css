@@ -27,7 +27,7 @@
 	}
 
 	.grayed-text {
-		@apply dark:text-slate-400 !important;
+		@apply dark:text-slate-400;
 	}
 
 	.light-text {
