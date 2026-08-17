@@ -46,3 +46,26 @@ Currently the three-part *Membangun Aplikasi Reservasi Meja dengan MEVN* series.
 The language a Post is written in, not the language of the site. The site is
 English; a Post may be Indonesian. Posts not in the site language are marked so
 a reader is not surprised by what they land on.
+
+## Position
+
+One engagement in Azmi's professional past: a salaried job, a freelance
+contract, a teaching stint, or an internship. All four are Positions — the
+kind is described in prose, not modelled.
+
+A Position has a start and an end. An end of "present" means the Position is
+still running; there is at most one such Position at a time in practice, but
+nothing enforces it.
+
+Positions overlap. Several freelance Positions ran inside the span of a
+salaried one. Overlapping is normal, not an anomaly to be resolved.
+
+## Work History
+
+The ordered set of all Positions. Ordered by *end* date, most recently active
+first — not by start date, which would sink a long Position below the short
+ones that ran inside it.
+
+Work History includes Positions from before the career proper began: the 2018
+internship predates the 2019 start date claimed in the About Me prose. Both
+are correct — an internship is not a career start.
