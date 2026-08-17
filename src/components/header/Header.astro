@@ -70,16 +70,16 @@ const menus: Menu[] = [
 
 <style>
 	.header-container {
-		@apply shadow-lg shadow-brand/30 bg-slate-700/70 mx-auto lg:max-w-screen-xl py-4 px-4 lg:px-8 rounded-full;
+		@apply shadow-lg shadow-brand/30 bg-gray-400/70 dark:bg-slate-700/70 mx-auto lg:max-w-screen-xl py-4 px-4 lg:px-8 rounded-full;
 	}
 
 	.menu {
-		@apply px-4 lg:px-8 text-xs lg:text-lg font-semibold text-gray-100;
-		@apply inline-block transition duration-200 hover:text-brand hover:-translate-y-0.5;
+		@apply px-4 lg:px-8 text-xs lg:text-lg font-semibold;
+		@apply inline-block hover:underline hover:decoration-brand hover:decoration-4;
 	}
 
 	.theme-toggle {
-		@apply pl-4 lg:pl-8 text-base lg:text-xl transition-colors duration-200 *:text-gray-100 hover:text-brand;
+		@apply pl-4 lg:pl-8 text-base lg:text-xl transition-colors duration-200 hover:*:text-brand;
 	}
 
 	.theme-icon {
