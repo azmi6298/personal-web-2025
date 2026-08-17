@@ -10,7 +10,7 @@ import Layout from '@/layouts/Layout.astro';
 <Layout>
 	<div class="base-container">
 		<div
-			class="flex flex-col lg:flex-row lg:h-dvh justify-center items-center gap-16"
+			class="relative flex flex-col lg:flex-row lg:h-dvh justify-center items-center gap-16"
 		>
 			<div class="w-full flex flex-col gap-y-8 items-center">
 				<Image
@@ -63,8 +63,26 @@ import Layout from '@/layouts/Layout.astro';
 					engineering.
 				</p>
 			</div>
+			<a
+				href="#work-history"
+				aria-label="Scroll to work history"
+				class="hidden lg:flex absolute bottom-8 left-1/2 -translate-x-1/2 items-center justify-center w-12 h-12 rounded-full bg-brand/20 text-brand animate-bounce transition duration-200 hover:bg-brand hover:text-gray-100 hover:scale-110 hover:shadow-lg hover:shadow-brand/40 motion-reduce:animate-none"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					class="w-6 h-6"
+				>
+					<path d="m6 9 6 6 6-6"></path>
+				</svg>
+			</a>
 		</div>
-		<div class="py-16 mx-auto">
+		<div id="work-history" class="py-16 mx-auto scroll-mt-8">
 			<WorkHistory />
 		</div>
 	</div>
