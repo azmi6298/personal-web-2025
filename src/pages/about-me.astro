@@ -2,9 +2,9 @@
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import GetResumeButton from '@/components/buttons/GetResumeButton.astro';
+import WorkHistory from '@/components/work-history/WorkHistory.astro';
 import portraitImage from '@/images/azmi-portrait.jpeg';
 import Layout from '@/layouts/Layout.astro';
-import { workExpYears } from '@/utils/constants';
 ---
 
 <Layout>
@@ -63,6 +63,9 @@ import { workExpYears } from '@/utils/constants';
 					engineering.
 				</p>
 			</div>
+		</div>
+		<div class="py-16 max-w-2xl mx-auto">
+			<WorkHistory />
 		</div>
 	</div>
 </Layout>

@@ -1,78 +1,67 @@
 ---
-import GetResumeButton from '../buttons/GetResumeButton.astro';
+import { positions } from '@/utils/constants';
 
-const workHistories = [
-	{
-		title: 'Sequis Innovation Lab',
-		link: 'https://sequis.co.id/',
-		description: 'Frontend Developer (Next.js)',
-		period: 'May 2023 - Present',
-	},
-	{
-		title: 'Ukirama',
-		link: 'https://ukirama.com/',
-		description: 'Full-stack Web Developer (RoR) - ERP Software',
-		period: 'September 2019 - April 2023',
-	},
-	{
-		title: 'RuangUMKM',
-		link: 'https://pekanraya.ruangumkm.id/',
-		description: 'Freelance Frontend Developer (Nuxt.js) - Marketplace Project',
-		period: 'October 2021 - December 2021',
-	},
-	{
-		title: 'Gank Global',
-		link: 'https://ganknow.com',
-		description: 'Freelance Frontend Developer (Nuxt.js) - Gaming Gig Platform',
-		period: 'July 2021 - August 2021',
-	},
-	{
-		title: '@infiniteclass.id',
-		link: null,
-		description: 'Coding Mentor - Programming Fundamentals with Javascript',
-		period: 'February 2021 - May 2021',
-	},
-	{
-		title: 'cataloq.co',
-		link: null,
-		description:
-			'Freelance Backend Developer (Express.js) - Marketplace Project',
-		period: 'August 2020 - March 2021',
-	},
-	{
-		title: 'Aristi Jasadata',
-		link: null,
-		description: 'Android Developer Intern - Banking Project',
-		period: 'July 2018 - August 2018',
-	},
-];
+interface Props {
+	limit?: number;
+}
+
+const { limit } = Astro.props;
+
+const sorted = [...positions].sort((a, b) =>
+	(b.endDate ?? '9999').localeCompare(a.endDate ?? '9999'),
+);
+const shown = limit ? sorted.slice(0, limit) : sorted;
+
+function formatDate(yearMonth: string) {
+	const [year, month] = yearMonth.split('-').map(Number);
+	return new Date(year, month - 1).toLocaleDateString('en-US', {
+		month: 'long',
+		year: 'numeric',
+	});
+}
+
+function formatRange(startDate: string, endDate: string | null) {
+	return `${formatDate(startDate)} - ${endDate ? formatDate(endDate) : 'Present'}`;
+}
 ---
 
 <div class="work-history-container">
-	<div class="section-title">Work History</div>
-	<div class="flex flex-col gap-y-4">
+	<h2 class="section-title">Work History</h2>
+	<ol class="flex flex-col gap-y-6">
 		{
-			workHistories.slice(0, 2).map((history) => (
-				<div class="flex flex-col lg:grid lg:grid-cols-2 gap-x-4">
+			shown.map((position) => (
+				<li class="relative border-l border-gray-300 dark:border-gray-700 pl-6">
+					<span class="dot" />
 					<p class="font-semibold text-base lg:text-lg grayed-text">
-						{history.period}
+						{formatRange(position.startDate, position.endDate)}
 					</p>
-					<div>
-						<p class="font-bold text-xl lg:text-3xl">{history.title}</p>
-						<p class="grayed-text">{history.description}</p>
-					</div>
-				</div>
+					<p class="font-bold text-xl lg:text-3xl">
+						{position.link ? (
+							<a
+								href={position.link}
+								target="_blank"
+								rel="noreferrer"
+								class="hover:text-brand underline underline-offset-2"
+							>
+								{position.title}
+							</a>
+						) : (
+							position.title
+						)}
+					</p>
+					<p class="grayed-text">{position.description}</p>
+				</li>
 			))
 		}
-	</div>
-	<a href="/about-me" class="self-center text-sm lg:text-xl font-semibold">
-		See More..
-	</a>
-	<GetResumeButton />
+	</ol>
 </div>
 
 <style>
 	.work-history-container {
 		@apply h-full flex flex-col justify-center gap-y-6;
+	}
+
+	.dot {
+		@apply absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-brand;
 	}
 </style>
