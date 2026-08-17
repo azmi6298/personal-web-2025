@@ -6,6 +6,7 @@ export type Position = {
 	description: string;
 	startDate: string;
 	endDate: string | null;
+	isHighlight?: boolean;
 };
 
 export const positions: Position[] = [
@@ -15,6 +16,14 @@ export const positions: Position[] = [
 		description: 'Frontend Developer (Next.js)',
 		startDate: '2023-05',
 		endDate: null,
+		isHighlight: true,
+	},
+	{
+		title: 'Dealls',
+		link: 'https://dealls.com/mentoring/muhammad-azmi-732',
+		description: 'Career Mentor',
+		startDate: '2024-12',
+		endDate: null,
 	},
 	{
 		title: 'Ukirama',
@@ -22,6 +31,7 @@ export const positions: Position[] = [
 		description: 'Full-stack Web Developer (RoR) - ERP Software',
 		startDate: '2019-09',
 		endDate: '2023-04',
+		isHighlight: true,
 	},
 	{
 		title: 'RuangUMKM',

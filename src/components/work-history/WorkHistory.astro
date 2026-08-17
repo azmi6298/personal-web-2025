@@ -2,15 +2,17 @@
 import { positions } from '@/utils/constants';
 
 interface Props {
-	limit?: number;
+	highlightOnly?: boolean;
 }
 
-const { limit } = Astro.props;
+const { highlightOnly } = Astro.props;
 
-const sorted = [...positions].sort((a, b) =>
+const filtered = highlightOnly
+	? positions.filter((position) => position.isHighlight)
+	: positions;
+const shown = [...filtered].sort((a, b) =>
 	(b.endDate ?? '9999').localeCompare(a.endDate ?? '9999'),
 );
-const shown = limit ? sorted.slice(0, limit) : sorted;
 
 function formatDate(yearMonth: string) {
 	const [year, month] = yearMonth.split('-').map(Number);

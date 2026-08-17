@@ -17,7 +17,7 @@ import WorkHistory from '@/components/work-history/WorkHistory.astro';
 			<div class="h-full lg:grid lg:grid-cols-2 gap-16">
 				<AboutMe />
 				<div class="hidden h-full lg:flex flex-col justify-center gap-y-6">
-					<WorkHistory limit={2} />
+					<WorkHistory highlightOnly />
 					<a
 						href="/about-me"
 						class="self-center text-sm lg:text-xl font-semibold"
@@ -31,7 +31,7 @@ import WorkHistory from '@/components/work-history/WorkHistory.astro';
 		<section
 			class="snap-section lg:hidden h-full flex flex-col justify-center gap-y-6"
 		>
-			<WorkHistory limit={2} />
+			<WorkHistory highlightOnly />
 			<a href="/about-me" class="self-center text-sm lg:text-xl font-semibold">
 				See More..
 			</a>
