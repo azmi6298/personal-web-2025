@@ -40,16 +40,20 @@ import { Icon } from 'astro-icon/components';
 <script>
 	import TypeIt from 'typeit';
 
-	new TypeIt('#movingText')
-		.type("Hi, I'm Imza")
-		.pause(300)
-		.delete(4)
-		.pause(600)
-		.type('Azmi!')
-		.pause(2000)
-		.options({
-			loop: true,
-			waitUntilVisible: true,
-		})
-		.go();
+	document.addEventListener('astro:page-load', () => {
+		if (!document.querySelector('#movingText')) return;
+
+		new TypeIt('#movingText')
+			.type("Hi, I'm Imza")
+			.pause(300)
+			.delete(4)
+			.pause(600)
+			.type('Azmi!')
+			.pause(2000)
+			.options({
+				loop: true,
+				waitUntilVisible: true,
+			})
+			.go();
+	});
 </script>
