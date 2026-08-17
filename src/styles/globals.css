@@ -27,11 +27,7 @@
 	}
 
 	.grayed-text {
-		@apply dark:text-slate-400;
-	}
-
-	.light-text {
-		@apply text-gray-100 !important;
+		@apply text-gray-500 dark:text-slate-400;
 	}
 
 	.section-title {
