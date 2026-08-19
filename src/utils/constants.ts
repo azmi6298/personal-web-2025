@@ -13,7 +13,7 @@ export const positions: Position[] = [
 	{
 		title: 'Sequis Innovation Lab',
 		link: 'https://sequis.co.id/',
-		description: 'Frontend Developer (Next.js)',
+		description: 'Frontend Developer (Next.js, Typescript)',
 		startDate: '2023-05',
 		endDate: null,
 		isHighlight: true,
@@ -28,7 +28,7 @@ export const positions: Position[] = [
 	{
 		title: 'Ukirama',
 		link: 'https://ukirama.com/',
-		description: 'Full-stack Web Developer (RoR) - ERP Software',
+		description: 'Full-stack Web Developer (Rails) - ERP Software',
 		startDate: '2019-09',
 		endDate: '2023-04',
 		isHighlight: true,

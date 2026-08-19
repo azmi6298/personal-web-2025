@@ -3,7 +3,6 @@ import Header from '@/components/header/Header.astro';
 import { ClientRouter } from 'astro:transitions';
 import '../styles/globals.css';
 import '@fontsource-variable/jetbrains-mono';
-import { workExpYears } from '@/utils/constants';
 
 interface Props {
 	title?: string;
@@ -13,9 +12,9 @@ interface Props {
 }
 
 const {
-	title: metaTitle = 'Azmi | Frontend Developer',
+	title: metaTitle = 'Muhammad Azmi | Frontend Engineer',
 	description:
-		metaText = `Hi, I'm Azmi! A passionate frontend developer with ${workExpYears} years of experience and a full-stack background. I love building intuitive, user-friendly web experiences`,
+		metaText = `Personal website of Muhammad Azmi. Explore my projects, experience, blog, and a few stories along the way.`,
 	canonical,
 	lang = 'en',
 } = Astro.props;
@@ -45,7 +44,7 @@ const canonicalHref = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
 		<link
 			rel="alternate"
 			type="application/rss+xml"
-			title="Azmi's blog"
+			title="Muhammad Azmi's blog"
 			href="/rss.xml"
 		/>
 		<link rel="sitemap" href="/sitemap-index.xml" />
