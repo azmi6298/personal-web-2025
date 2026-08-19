@@ -30,6 +30,14 @@
 		@apply text-gray-500 dark:text-slate-400;
 	}
 
+	.snap-container {
+		@apply max-h-dvh max-w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth;
+	}
+
+	.snap-section {
+		@apply h-dvh snap-start snap-always;
+	}
+
 	.section-title {
 		@apply text-2xl lg:text-[3rem] font-bold underline lg:no-underline mb-4;
 	}

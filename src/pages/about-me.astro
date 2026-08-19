@@ -5,12 +5,13 @@ import GetResumeButton from '@/components/buttons/GetResumeButton.astro';
 import WorkHistory from '@/components/work-history/WorkHistory.astro';
 import portraitImage from '@/images/azmi-portrait.jpeg';
 import Layout from '@/layouts/Layout.astro';
+import { workExpYears } from '@/utils/constants';
 ---
 
 <Layout>
-	<div class="base-container">
-		<div
-			class="relative flex flex-col lg:flex-row lg:h-dvh justify-center items-center gap-16"
+	<div class="base-container snap-container">
+		<section
+			class="snap-section py-36 lg:py-0 relative flex flex-col lg:flex-row justify-center items-center gap-16"
 		>
 			<div class="w-full flex flex-col gap-y-8 items-center">
 				<Image
@@ -48,25 +49,26 @@ import Layout from '@/layouts/Layout.astro';
 					Hi, I'm Azmi
 				</p>
 				<p class="description">
-					I'm a Software Engineer with over 7 years of experience, starting my
-					career in 2019. My primary focus is frontend development, where I
-					enjoy building fast, scalable, and user-friendly web applications.
-					Along the way, I've also gained hands-on experience across the full
-					stack, allowing me to collaborate effectively on end-to-end product
-					development.
+					I'm a Software Engineer with {workExpYears} years of experience, mostly
+					building on the frontend. While frontend is my main thing, I've also spent
+					time across the full stack, so I'm comfortable jumping into different parts
+					of the product when needed.
 				</p>
 				<p class="description">
-					Outside of work, you'll usually find me out for a run. It's become my
-					favorite way to reset, challenge myself, and stay consistent. I enjoy
-					the process as much as the progress, and the mindset I've built
-					through running naturally carries over into how I approach software
-					engineering.
+					Outside of work, you'll probably find me on{' '}
+					<a
+						href="https://www.strava.com/athletes/105639249"
+						target="_blank"
+						class="text-orange-500"
+					>
+						Strava
+					</a>. Feel free to drop a kudos if you stumble across one of my runs🧡
 				</p>
 			</div>
 			<a
 				href="#work-history"
 				aria-label="Scroll to work history"
-				class="hidden lg:flex absolute bottom-8 left-1/2 -translate-x-1/2 items-center justify-center w-12 h-12 rounded-full bg-brand/20 text-brand animate-bounce transition duration-200 hover:bg-brand hover:text-gray-100 hover:scale-110 hover:shadow-lg hover:shadow-brand/40 motion-reduce:animate-none"
+				class="flex absolute bottom-8 left-1/2 -translate-x-1/2 items-center justify-center w-12 h-12 rounded-full bg-brand/20 text-brand animate-bounce transition duration-200 hover:bg-brand hover:text-gray-100 hover:scale-110 hover:shadow-lg hover:shadow-brand/40 motion-reduce:animate-none"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -81,10 +83,13 @@ import Layout from '@/layouts/Layout.astro';
 					<path d="m6 9 6 6 6-6"></path>
 				</svg>
 			</a>
-		</div>
-		<div id="work-history" class="py-16 mx-auto scroll-mt-8">
+		</section>
+		<section
+			id="work-history"
+			class="snap-section min-h-dvh h-auto max-w-screen-sm py-24 mx-auto scroll-mt-8"
+		>
 			<WorkHistory />
-		</div>
+		</section>
 	</div>
 </Layout>
 
