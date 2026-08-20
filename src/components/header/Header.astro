@@ -20,6 +20,10 @@ const menus: Menu[] = [
 		path: '/blogs',
 	},
 ];
+
+const currentPath = Astro.url.pathname;
+const isActive = (path: string) =>
+	path === '/' ? currentPath === '/' : currentPath.startsWith(path);
 ---
 
 <header class="fixed z-50 top-6 translate-x-[-50%] left-[50%]">
@@ -27,7 +31,11 @@ const menus: Menu[] = [
 		<div class="flex divide-x-2 divide-brand justify-between items-center">
 			{
 				menus.map((menu) => (
-					<a href={menu.path} class="menu">
+					<a
+						href={menu.path}
+						class="menu"
+						aria-current={isActive(menu.path) ? 'page' : undefined}
+					>
 						{menu.label}
 					</a>
 				))
@@ -76,6 +84,10 @@ const menus: Menu[] = [
 	.menu {
 		@apply px-4 lg:px-8 text-xs lg:text-lg font-semibold;
 		@apply inline-block hover:underline hover:decoration-brand hover:decoration-4;
+	}
+
+	.menu[aria-current='page'] {
+		@apply underline decoration-brand decoration-4;
 	}
 
 	.theme-toggle {
