@@ -4,11 +4,11 @@
 
 @layer base {
 	body {
-		@apply bg-primary text-gray-900 dark:bg-primary-inverted dark:text-gray-100;
+		@apply bg-paper text-ink dark:bg-paper-dark dark:text-ink-dark;
 	}
 
 	nav {
-		@apply bg-primary text-gray-900 dark:bg-primary-inverted dark:text-gray-100;
+		@apply bg-paper text-ink dark:bg-paper-dark dark:text-ink-dark;
 	}
 
 	header,
@@ -17,7 +17,7 @@
 	p,
 	ul,
 	a {
-		@apply text-gray-900 dark:text-gray-100;
+		@apply text-ink dark:text-ink-dark;
 	}
 }
 
@@ -27,7 +27,7 @@
 	}
 
 	.grayed-text {
-		@apply text-gray-500 dark:text-slate-400;
+		@apply text-ink-muted dark:text-ink-muted-dark;
 	}
 
 	.snap-container {
@@ -39,11 +39,16 @@
 	}
 
 	.section-title {
-		@apply text-2xl lg:text-[3rem] font-bold underline lg:no-underline mb-4;
+		@apply flex items-baseline gap-3 text-3xl lg:text-[2.75rem] font-bold tracking-tight mb-7;
+	}
+
+	.section-title::before {
+		content: "";
+		@apply w-6 h-[0.28rem] rounded-full bg-route flex-none mb-1.5;
 	}
 
 	.highlight-text {
-		@apply font-semibold underline decoration-violet-600 decoration-2;
+		@apply font-semibold underline decoration-route decoration-2;
 	}
 
 	/* Long-form article body. Hand-rolled rather than pulling in the typography
@@ -65,7 +70,7 @@
 	}
 
 	.prose a {
-		@apply text-brand underline underline-offset-2;
+		@apply text-route underline underline-offset-2;
 	}
 
 	.prose ul {
@@ -85,7 +90,7 @@
 	}
 
 	.prose blockquote {
-		@apply border-l-2 border-brand pl-4 italic;
+		@apply border-l-2 border-route pl-4 italic;
 	}
 
 	.prose pre {
