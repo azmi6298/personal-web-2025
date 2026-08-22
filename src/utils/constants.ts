@@ -1,5 +1,8 @@
 export const workExpYears = new Date().getFullYear() - 2019;
 
+export const latestResumeLink =
+	'https://drive.google.com/file/d/1_6dsyDohCMo-VxNv2XKLq14RAciq3xt_/view?usp=sharing';
+
 export type Position = {
 	title: string;
 	link: string | null;
