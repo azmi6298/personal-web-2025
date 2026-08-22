@@ -5,22 +5,23 @@ import BlogItem from './BlogItem.astro';
 const posts = (await getPublishedPosts()).slice(0, 3);
 ---
 
-<div class="blog-container">
-	<div class="flex flex-col lg:items-center lg:gap-y-10">
-		<div class="section-title">Blogs</div>
+<section class="py-16 lg:py-24">
+	<div class="blog-container">
+		<h2 class="section-title">Blogs</h2>
+		<div class="flex flex-col">
+			{posts.map((post) => <BlogItem post={post} />)}
+			<a
+				href="/blogs"
+				class="text-sm lg:text-lg grayed-text hover:text-route transition-colors duration-200"
+			>
+				All posts &rarr;
+			</a>
+		</div>
 	</div>
-	<div class="flex flex-col">
-		{posts.map((post) => <BlogItem post={post} />)}
-		<a
-			href="/blogs"
-			class="text-sm lg:text-lg grayed-text hover:text-brand transition-colors duration-200"
-			>All posts &rarr;</a
-		>
-	</div>
-</div>
+</section>
 
 <style>
 	.blog-container {
-		@apply h-full flex flex-col gap-y-6 xl:flex-row xl:gap-x-10 justify-center xl:justify-around items-start lg:items-center;
+		@apply flex flex-col gap-y-6;
 	}
 </style>
