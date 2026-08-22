@@ -3,9 +3,10 @@ import { positions } from '@/utils/constants';
 
 interface Props {
 	highlightOnly?: boolean;
+	showTitle?: boolean;
 }
 
-const { highlightOnly } = Astro.props;
+const { highlightOnly, showTitle = true } = Astro.props;
 
 const filtered = highlightOnly
 	? positions.filter((position) => position.isHighlight)
@@ -28,23 +29,25 @@ function formatRange(startDate: string, endDate: string | null) {
 ---
 
 <div class="work-history-container">
-	<h2 class="section-title">Work History</h2>
-	<ol class="flex flex-col gap-y-6">
+	{showTitle && <h2 class="section-title">Work History</h2>}
+	<ol class="splits">
+		<div class="route-path" aria-hidden="true">
+			<svg viewBox="0 0 2 100" preserveAspectRatio="none">
+				<path d="M1,0 L1,100" pathLength="1"></path>
+			</svg>
+		</div>
 		{
-			shown.map((position) => (
-				<li class="relative border-l border-gray-300 dark:border-gray-700 pl-6">
-					<span class="dot" />
-					<p class="font-semibold text-base lg:text-lg grayed-text">
+			shown.map((position, index) => (
+				<li class="split-item">
+					<span
+						class={`split-dot ${index === 0 && !position.endDate ? 'is-current' : ''}`}
+					/>
+					<p class="split-range grayed-text">
 						{formatRange(position.startDate, position.endDate)}
 					</p>
-					<p class="font-bold text-xl lg:text-3xl">
+					<p class="split-title">
 						{position.link ? (
-							<a
-								href={position.link}
-								target="_blank"
-								rel="noreferrer"
-								class="hover:text-brand underline underline-offset-2"
-							>
+							<a href={position.link} target="_blank" rel="noreferrer">
 								{position.title}
 							</a>
 						) : (
@@ -63,7 +66,92 @@ function formatRange(startDate: string, endDate: string | null) {
 		@apply flex flex-col gap-y-6;
 	}
 
-	.dot {
-		@apply absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-brand;
+	.splits {
+		@apply relative;
+	}
+
+	.route-path {
+		@apply absolute left-[5px] top-[0.6rem] bottom-[0.6rem] w-0.5;
+	}
+
+	.route-path svg {
+		@apply h-full w-0.5 block;
+	}
+
+	.route-path path {
+		fill: none;
+		stroke: theme('colors.route');
+		stroke-width: 2;
+		stroke-dasharray: 1;
+		stroke-dashoffset: 0;
+	}
+
+	@supports (animation-timeline: view()) {
+		.route-path path {
+			stroke-dashoffset: 1;
+			animation: draw-route linear forwards;
+			animation-timeline: view(block 90% 10%);
+		}
+	}
+
+	@keyframes draw-route {
+		from {
+			stroke-dashoffset: 1;
+		}
+		to {
+			stroke-dashoffset: 0;
+		}
+	}
+
+	.split-item {
+		@apply relative pl-8 pb-9;
+	}
+
+	.split-item:last-child {
+		@apply pb-0;
+	}
+
+	.split-dot {
+		@apply absolute left-0 top-[0.4rem] w-3 h-3 rounded-full bg-paper dark:bg-paper-dark border-2 border-route;
+	}
+
+	.split-dot.is-current::after {
+		content: '';
+		@apply absolute -inset-[5px] rounded-full border border-route animate-[pulse-ring_2s_ease-out_infinite];
+	}
+
+	.split-range {
+		@apply text-sm lg:text-base;
+	}
+
+	.split-title {
+		@apply font-bold text-xl lg:text-2xl mt-1;
+	}
+
+	.split-title a {
+		@apply underline underline-offset-2 hover:text-route transition-colors duration-200;
+	}
+
+	@keyframes pulse-ring {
+		0% {
+			transform: scale(0.6);
+			opacity: 0.8;
+		}
+		100% {
+			transform: scale(1.6);
+			opacity: 0;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.split-dot.is-current::after {
+			animation: none;
+			display: none;
+		}
+
+		.route-path path {
+			animation: none;
+			stroke-dashoffset: 0;
+		}
 	}
 </style>
