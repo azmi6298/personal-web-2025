@@ -78,24 +78,38 @@ const isActive = (path: string) =>
 
 <style>
 	.header-container {
-		@apply shadow-lg shadow-brand/30 bg-gray-400/70 dark:bg-slate-700/70 mx-auto lg:max-w-screen-xl py-4 px-4 lg:px-8 rounded-full;
+		@apply border border-line dark:border-line-dark bg-surface dark:bg-surface-dark mx-auto lg:max-w-screen-xl py-3 px-4 lg:px-7 rounded-full;
 	}
 
 	.menu {
-		@apply px-4 lg:px-8 text-xs lg:text-lg font-semibold;
-		@apply inline-block hover:underline hover:decoration-brand hover:decoration-4;
+		@apply relative px-4 lg:px-6 py-2 text-sm lg:text-lg font-semibold text-ink-muted dark:text-ink-muted-dark;
+		@apply inline-block transition-colors duration-200 hover:text-ink dark:hover:text-ink-dark;
+	}
+
+	.menu::after {
+		content: '';
+		@apply absolute left-4 right-4 lg:left-6 lg:right-6 bottom-1 h-0.5 bg-route origin-left scale-x-0 transition-transform duration-200;
+	}
+
+	.menu:hover::after,
+	.menu[aria-current='page']::after {
+		@apply scale-x-100;
 	}
 
 	.menu[aria-current='page'] {
-		@apply underline decoration-brand decoration-4;
+		@apply text-ink dark:text-ink-dark;
 	}
 
 	.theme-toggle {
-		@apply pl-4 lg:pl-8 text-base lg:text-xl transition-colors duration-200 hover:*:text-brand;
+		@apply pl-4 lg:pl-6 text-base lg:text-xl hover:*:text-route;
 	}
 
 	.theme-icon {
-		@apply hidden;
+		@apply hidden transition-transform duration-300;
+	}
+
+	.theme-toggle:hover .theme-icon {
+		transform: rotate(25deg);
 	}
 
 	:global(html:not(.dark)) .theme-icon--sun {
@@ -107,12 +121,14 @@ const isActive = (path: string) =>
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.menu {
-			@apply transition-none hover:translate-y-0;
+		.menu,
+		.menu::after,
+		.theme-icon {
+			@apply transition-none;
 		}
 
-		.theme-toggle {
-			@apply transition-none;
+		.theme-toggle:hover .theme-icon {
+			transform: none;
 		}
 	}
 </style>
