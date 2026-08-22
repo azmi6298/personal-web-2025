@@ -1,7 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
 import type { TechStack } from './AboutMe.astro';
-import '@splidejs/splide/css';
 
 interface Props {
 	data: TechStack[];
@@ -10,33 +9,64 @@ interface Props {
 const { data } = Astro.props;
 ---
 
-<div class="slider-container">
-	<div class="splide">
-		<div class="splide__track">
-			<ul class="splide__list">
-				{
-					data.map((data) => (
-						<li class="splide__slide">
-							<div class="card">
-								<Icon name={data.icon} class="w-20 h-20" />
-								<span class="text-sm font-semibold">{data.label}</span>
-							</div>
-						</li>
-					))
-				}
-			</ul>
-		</div>
+<div class="marquee">
+	<div class="marquee-track">
+		{
+			[...data, ...data].map((item) => (
+				<div class="card">
+					<Icon name={item.icon} class="w-16 h-16 icon" />
+					<span class="text-sm font-semibold">{item.label}</span>
+				</div>
+			))
+		}
 	</div>
 </div>
 
 <style>
-	.slider-container {
-		@apply max-w-full;
+	.marquee {
+		@apply max-w-full overflow-hidden;
+		mask-image: linear-gradient(
+			90deg,
+			transparent 0,
+			black 8%,
+			black 92%,
+			transparent 100%
+		);
+	}
+
+	.marquee-track {
+		@apply flex w-max gap-20;
+		animation: scroll-left 34s linear infinite;
 	}
 
 	.card {
-		@apply flex flex-col justify-center items-center;
+		@apply flex flex-shrink-0 flex-col items-center justify-center gap-2;
+	}
+
+	.card .icon {
+		@apply grayscale opacity-60 transition duration-200;
+	}
+
+	.card:hover .icon {
+		@apply grayscale-0 opacity-100;
+	}
+
+	@keyframes scroll-left {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-50%);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.marquee-track {
+			animation: none;
+		}
+		.marquee {
+			overflow-x: auto;
+			mask-image: none;
+		}
 	}
 </style>
-
-<script src="../../libs/splide.js"></script>
