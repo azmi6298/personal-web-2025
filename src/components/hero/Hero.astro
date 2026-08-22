@@ -1,59 +1,190 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+import formalPhoto from '@/images/hero-formal.jpeg';
+import runningPhoto from '@/images/hero-running.jpeg';
+import { workExpYears } from '@/utils/constants';
 ---
 
 <div class="hero-container">
-	<span class="hero-title" id="movingText"></span>
-
-	<span class="text-center text-xl lg:text-2xl font-semibold">
-		Web Developer @{' '}
-		<span class="hover:text-brand">Sequis Innovation Lab</span>
-	</span>
-
-	<div class="flex gap-x-5 text-4xl lg:text-[3rem]">
-		<a
-			href="https://www.linkedin.com/in/azmi6298/"
-			target="_blank"
-			rel="noreferrer"
-		>
-			<Icon name="linkedin" class="hover:text-blue-400" />
-		</a>
-		<a href="https://github.com/azmi6298" target="_blank" rel="noreferrer">
-			<Icon name="github" class="hover:text-gray-600" />
-		</a>
-		<a href="https://instagram.com/azmi6298" target="_blank" rel="noreferrer">
-			<Icon name="instagram" class="hover:text-orange-400" />
-		</a>
+	<!-- <div class="backdrop-avatars" aria-hidden="true">
+		<Image
+			class="backdrop-avatar backdrop-avatar-formal"
+			src={formalPhoto}
+			alt=""
+			width={420}
+			height={420}
+		/>
+		<Image
+			class="backdrop-avatar backdrop-avatar-running"
+			src={runningPhoto}
+			alt=""
+			width={420}
+			height={420}
+		/>
+	</div> -->
+	<!-- <div class="hero-scrim" aria-hidden="true"></div> -->
+	<div class="hero-content">
+		<h1 class="hero-heading">
+			<span class="code-caption">
+				Running Code<span class="cursor-blink" aria-hidden="true">_</span>
+			</span>
+			<span class="or-connector">or</span>
+			<span class="sporty-caption">
+				Running{' '}
+				<span class="accent">
+					Miles
+					<svg
+						class="accent-underline"
+						viewBox="0 0 100 20"
+						preserveAspectRatio="none"
+						aria-hidden="true"
+						><path d="M2,14 C20,4 35,20 50,10 C65,0 80,16 98,8"></path></svg
+					>
+				</span>
+			</span>
+		</h1>
+		<div class="cta-row">
+			<a href="#about" class="btn-primary" id="see-my-work"
+				>See my work &rarr;</a
+			>
+		</div>
 	</div>
 </div>
 
-<style>
-	.hero-container {
-		@apply h-full flex flex-col gap-y-10 justify-center items-center select-none;
-	}
-
-	.hero-title {
-		@apply text-4xl md:text-[4rem] lg:text-[5rem] font-bold text-center;
-	}
-</style>
-
 <script>
-	import TypeIt from 'typeit';
-
-	document.addEventListener('astro:page-load', () => {
-		if (!document.querySelector('#movingText')) return;
-
-		new TypeIt('#movingText')
-			.type("Hi, I'm Imza")
-			.pause(300)
-			.delete(4)
-			.pause(600)
-			.type('Azmi!')
-			.pause(2000)
-			.options({
-				loop: true,
-				waitUntilVisible: true,
-			})
-			.go();
+	document.getElementById('see-my-work')?.addEventListener('click', (e) => {
+		e.preventDefault();
+		document
+			.querySelector('#about')
+			?.scrollIntoView({ behavior: 'smooth', block: 'center' });
 	});
 </script>
+
+<style>
+	.hero-container {
+		@apply relative min-h-dvh overflow-hidden flex flex-col items-center justify-center text-center gap-y-6 py-16;
+	}
+
+	.backdrop-avatars {
+		@apply absolute inset-0 z-0;
+	}
+
+	.backdrop-avatar {
+		@apply absolute rounded-full object-cover w-56 h-56 md:w-80 md:h-80 lg:w-[26rem] lg:h-[26rem] opacity-60 dark:opacity-40;
+	}
+
+	.backdrop-avatar-formal {
+		@apply top-[20%] left-[4%] md:left-[10%] -rotate-6;
+	}
+
+	.backdrop-avatar-running {
+		@apply bottom-[20%] right-[4%] md:right-[10%] rotate-6;
+	}
+
+	.hero-scrim {
+		@apply absolute inset-0 z-[1];
+		background: radial-gradient(
+			ellipse 60% 55% at center,
+			theme('colors.paper') 45%,
+			transparent 80%
+		);
+	}
+
+	:global(.dark) .hero-scrim {
+		background: radial-gradient(
+			ellipse 60% 55% at center,
+			theme('colors.paper-dark') 15%,
+			transparent 80%
+		);
+	}
+
+	.hero-content {
+		@apply relative z-10 flex flex-col items-center gap-y-6;
+	}
+
+	.hero-heading {
+		@apply leading-[1.15] grid gap-y-4;
+	}
+
+	.or-connector {
+		@apply block font-sans font-semibold text-ink-muted dark:text-ink-muted-dark my-2 text-lg lg:text-3xl;
+	}
+
+	.code-caption,
+	.sporty-caption {
+		@apply block text-4xl md:text-5xl lg:text-6xl;
+	}
+
+	.code-caption {
+		@apply font-code font-bold tracking-tight mb-1;
+	}
+
+	.cursor-blink {
+		@apply inline-block ml-1 animate-[cursor-blink_1s_steps(1)_infinite];
+	}
+
+	.sporty-caption {
+		@apply font-sporty font-normal uppercase tracking-wide;
+	}
+
+	.accent {
+		@apply relative inline-block text-route;
+	}
+
+	.accent-underline {
+		@apply absolute left-0 bottom-[-0.08em] w-full h-[0.28em] overflow-visible;
+	}
+
+	.accent-underline path {
+		fill: none;
+		stroke: theme('colors.route');
+		stroke-width: 3;
+		stroke-linecap: round;
+		stroke-dasharray: 120;
+		stroke-dashoffset: 120;
+		animation: draw-squiggle 1s ease-out 0.5s forwards;
+	}
+
+	.hero-sub {
+		@apply mt-2 text-lg lg:text-xl text-ink-muted dark:text-ink-muted-dark max-w-[46ch];
+	}
+
+	.hero-sub a {
+		@apply text-route underline underline-offset-2;
+	}
+
+	.cta-row {
+		@apply flex gap-4 mt-4 items-center justify-center flex-wrap;
+	}
+
+	.btn-primary {
+		@apply inline-flex items-center gap-2 font-sans font-bold text-base lg:text-lg bg-route text-route-ink border-2 border-route px-6 py-3 rounded-full transition-transform duration-200 hover:-translate-y-0.5;
+	}
+
+	@keyframes draw-squiggle {
+		to {
+			stroke-dashoffset: 0;
+		}
+	}
+
+	@keyframes cursor-blink {
+		50% {
+			opacity: 0;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.accent-underline path {
+			animation: none;
+			stroke-dashoffset: 0;
+		}
+
+		.cursor-blink {
+			animation: none;
+		}
+
+		.btn-primary {
+			@apply transition-none hover:translate-y-0;
+		}
+	}
+</style>
